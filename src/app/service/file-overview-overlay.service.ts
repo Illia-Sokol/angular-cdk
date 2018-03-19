@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Overlay } from "@angular/cdk/overlay";
 import { ComponentPortal } from '@angular/cdk/portal';
+import { FilePreviewOverlayComponent } from "../file-preview/file-preview-overlay.component";
 
 @Injectable()
 export class FilePreviewOverlayService {
@@ -8,7 +9,7 @@ export class FilePreviewOverlayService {
 
     open() {
         const overlayRef = this.overlay.create();
-        const filePreviewPortal = new ComponentPortal(FilePreviewOverlayService);
+        const filePreviewPortal = new ComponentPortal(FilePreviewOverlayComponent);
         overlayRef.attach(filePreviewPortal);
     }
 }

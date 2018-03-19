@@ -5,7 +5,8 @@ import { Component } from '@angular/core';
     templateUrl: 'file-preview-overlay.component.html',
     styles: [`
         :host {
-            background: lightblue;
+            display: block;
+            background-color: rgba(10, 10, 10, .3);
             border: 1px solid blue;
         }
     `]

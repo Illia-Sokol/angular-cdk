@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-// import 'hammerjs';
+import 'hammerjs';
 
 import { OverlayModule } from '@angular/cdk/overlay';
 import { FilePreviewOverlayComponent } from './file-preview/file-preview-overlay.component'
@@ -14,10 +14,11 @@ import { FilePreviewOverlayService } from './service/file-overview-overlay.servi
     FilePreviewOverlayComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    OverlayModule
   ],
   providers: [FilePreviewOverlayService],
   bootstrap: [AppComponent],
-  // entryComponents: [FilePreviewOverlayComponent]
+  entryComponents: [FilePreviewOverlayComponent]
 })
 export class AppModule { }
