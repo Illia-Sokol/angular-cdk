@@ -1,18 +1,23 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-
 import { AppComponent } from './app.component';
+// import 'hammerjs';
 
+import { OverlayModule } from '@angular/cdk/overlay';
+import { FilePreviewOverlayComponent } from './file-preview/file-preview-overlay.component'
+import { FilePreviewOverlayService } from './service/file-overview-overlay.service'
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    FilePreviewOverlayComponent
   ],
   imports: [
     BrowserModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [FilePreviewOverlayService],
+  bootstrap: [AppComponent],
+  // entryComponents: [FilePreviewOverlayComponent]
 })
 export class AppModule { }
