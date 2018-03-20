@@ -20,7 +20,7 @@ export class FilePreviewOverlayService {
         //     width: '400px',
         //     height: '600px'
         // });
-        
+
         const dialogConfig = { ...DEFAULT_CONFIG, ...config };
         const overlayRef = this.createOverlay(dialogConfig);
         const filePreviewPortal = new ComponentPortal(FilePreviewOverlayComponent);
@@ -31,7 +31,7 @@ export class FilePreviewOverlayService {
         const positionStrategy = this.overlay.position()
             .global()
             .centerHorizontally()
-            .centerVertically()
+            .centerVertically();
 
         const overlayConfig = new OverlayConfig({
             hasBackdrop: config.hasBackdrop,
