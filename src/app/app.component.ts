@@ -13,8 +13,8 @@ export class AppComponent {
   showFilePreview() {
     const dialogRef: FilerPreviewOverlayRef = this.filePreviewOverlayService.open();
 
-    setTimeout( () => {
-      dialogRef.close();
-    }, 2000);
+    // setTimeout( () => {
+    //   dialogRef.close();
+    // }, 2000);
   }
 }

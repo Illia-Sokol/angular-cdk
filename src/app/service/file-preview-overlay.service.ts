@@ -13,6 +13,7 @@ const DEFAULT_CONFIG: FilePreviewOverlayConfig = {
 
 @Injectable()
 export class FilePreviewOverlayService {
+
     constructor(private overlay: Overlay) {
     }
 
@@ -27,12 +28,18 @@ export class FilePreviewOverlayService {
         const dialogRef = new FilerPreviewOverlayRef(overlayRef);
         const filePreviewPortal = new ComponentPortal(FilePreviewOverlayComponent);
         overlayRef.attach(filePreviewPortal);
+        overlayRef.backdropClick().subscribe( _ => dialogRef.close());
 
         return dialogRef;
     }
 
     private getOverlayConfig(config: FilePreviewOverlayConfig = {}): OverlayConfig {
         const positionStrategy = this.overlay.position()
+        // .connectedTo(
+        //     elementRef: ElementRef,
+        //     originPos: OriginConnectionPosition,
+        //     overlayPos: OverlayConnectionPosition
+        // );
             .global()
             .centerHorizontally()
             .centerVertically();
