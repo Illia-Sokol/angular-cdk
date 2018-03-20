@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-    selector: 'file-preview',
+    selector: 'app-file-preview',
     templateUrl: 'file-preview-overlay.component.html',
     styles: [`
         :host {
@@ -12,4 +12,4 @@ import { Component } from '@angular/core';
     `]
 })
 
-export class FilePreviewOverlayComponent{}
+export class FilePreviewOverlayComponent {}
