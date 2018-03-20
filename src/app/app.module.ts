@@ -5,8 +5,8 @@ import { AppComponent } from './app.component';
 import 'hammerjs';
 
 import { OverlayModule } from '@angular/cdk/overlay';
-import { FilePreviewOverlayComponent } from './file-preview/file-preview-overlay.component'
-import { FilePreviewOverlayService } from './service/file-overview-overlay.service'
+import { FilePreviewOverlayComponent } from './file-preview/file-preview-overlay.component';
+import { FilePreviewOverlayService } from './service/file-preview-overlay.service';
 
 @NgModule({
   declarations: [

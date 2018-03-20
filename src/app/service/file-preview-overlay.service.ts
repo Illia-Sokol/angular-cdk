@@ -1,14 +1,15 @@
-import { Injectable } from "@angular/core";
-import { Overlay, OverlayConfig } from "@angular/cdk/overlay";
+import { Injectable } from '@angular/core';
+import { Overlay, OverlayConfig } from '@angular/cdk/overlay';
 import { ComponentPortal } from '@angular/cdk/portal';
-import { FilePreviewOverlayComponent } from "../file-preview/file-preview-overlay.component";
-import { FilePreviewOverlayConfig } from './file-overview-overlay.interface';
+import { FilePreviewOverlayComponent } from '../file-preview/file-preview-overlay.component';
+import { FilePreviewOverlayConfig } from './file-preview-overlay.interface';
+import { FilerPreviewOverlayRef } from './file-preview-overlay-ref';
 
 const DEFAULT_CONFIG: FilePreviewOverlayConfig = {
     panelClass: 'sokol',
     hasBackdrop: true,
-    backdropClass: 'falcon'
-}
+    backdropClass: 'dark-backdrop'
+};
 
 @Injectable()
 export class FilePreviewOverlayService {
@@ -23,8 +24,11 @@ export class FilePreviewOverlayService {
 
         const dialogConfig = { ...DEFAULT_CONFIG, ...config };
         const overlayRef = this.createOverlay(dialogConfig);
+        const dialogRef = new FilerPreviewOverlayRef(overlayRef);
         const filePreviewPortal = new ComponentPortal(FilePreviewOverlayComponent);
         overlayRef.attach(filePreviewPortal);
+
+        return dialogRef;
     }
 
     private getOverlayConfig(config: FilePreviewOverlayConfig = {}): OverlayConfig {
@@ -38,8 +42,9 @@ export class FilePreviewOverlayService {
             backdropClass: config.backdropClass,
             panelClass: config.panelClass,
             scrollStrategy: this.overlay.scrollStrategies.block(),
+            // scrollStrategy: this.overlay.scrollStrategies.close(),
             positionStrategy
-        })
+        });
 
         return overlayConfig;
     }
