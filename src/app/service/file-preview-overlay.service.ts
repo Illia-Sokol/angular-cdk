@@ -33,10 +33,6 @@ export class FilePreviewOverlayService {
         return dialogRef;
     }
 
-    private createIjector(config: FilePreviewDialogConfig, dialog: FilePreviewOverlayRef): PortalInjector {
-
-    }
-
     private getOverlayConfig(config: FilePreviewOverlayConfig = {}): OverlayConfig {
         const positionStrategy = this.overlay.position()
         // .connectedTo(
@@ -53,7 +49,6 @@ export class FilePreviewOverlayService {
             backdropClass: config.backdropClass,
             panelClass: config.panelClass,
             scrollStrategy: this.overlay.scrollStrategies.block(),
-            // scrollStrategy: this.overlay.scrollStrategies.close(),
             positionStrategy
         });
 
