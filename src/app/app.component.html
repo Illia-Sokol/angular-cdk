@@ -29,12 +29,10 @@
 </ng-template>
 
 <button 
-    (click)="getApp()"
-    #popoverLink
     class="popover-service"
-    >Show popover from service</button>
+    (click)="getApp()"
+    #popoverLink>Show popover from service</button>
 <ng-template
-    #popoverContent
-    >
+    #popoverContent>
     <div class="template">Another popover</div>
 </ng-template>

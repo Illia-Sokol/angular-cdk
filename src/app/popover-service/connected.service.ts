@@ -10,7 +10,10 @@ import {
   TemplateRef,
   ViewContainerRef,
   ElementRef,
-  NgZone
+  NgZone,
+  ComponentFactoryResolver,
+  ApplicationRef,
+  Injector
 } from '@angular/core';
 import {
   TemplatePortal
@@ -19,12 +22,22 @@ import {
   Overlay,
   OverlayConfig,
   ConnectedPositionStrategy,
+  PositionStrategy,
   OriginConnectionPosition,
   OverlayConnectionPosition,
-  OverlayRef
+  OverlayRef,
+  ScrollStrategyOptions,
+  ScrollDispatcher,
+  OverlayContainer,
+  OverlayPositionBuilder,
+  OverlayKeyboardDispatcher,
+  ScrollStrategy
 } from '@angular/cdk/overlay';
 import { Platform } from '@angular/cdk/platform';
-import { ViewportRuler } from '@angular/cdk/scrolling';
+import {
+  ViewportRuler,
+} from '@angular/cdk/scrolling';
+import {LayoutModule} from '@angular/cdk/layout';
 
 const originPos: OriginConnectionPosition = { originX: 'start', originY: 'bottom' };
 const overlayPos: OverlayConnectionPosition = { overlayX: 'start', overlayY: 'top' };
@@ -33,51 +46,75 @@ const overlayPos: OverlayConnectionPosition = { overlayX: 'start', overlayY: 'to
 export class ConnectedService {
 
   constructor(
-    private overlay: Overlay,
     private platform: Platform,
-    private viewRule: ViewportRuler
+    private viewRule: ViewportRuler,
+    private scrollDispatcher: ScrollDispatcher,
+    private ngZone: NgZone,
+    private overlayContainer: OverlayContainer,
+    private componentFactoryResolver: ComponentFactoryResolver,
+    private overlayKeyboardDispatcher: OverlayKeyboardDispatcher,
+    private applicationRef: ApplicationRef,
+    private injector: Injector,
+    private overlayPositionBuilder: OverlayPositionBuilder
   ) {
   }
 
   public open<T>(
     componentOrTemplateRef: TemplateRef<T>,
     viewRef: ViewContainerRef,
-    element: ElementRef
+    element: ElementRef,
   ) {
     const createPortal = new TemplatePortal(componentOrTemplateRef, viewRef);
-
-    const strategy = this.overlay.position()
-      .connectedTo(
-        element,
-        // originPos,
-        // overlayPos
-        { originX: 'end', originY: 'center' },
-        { overlayX: 'start', overlayY: 'center' }
-    );
 
     const position = new ConnectedPositionStrategy(
       originPos,
       overlayPos,
       element,
       this.viewRule,
-      'some'
+      document.body
+    );
+
+    const scrollStrategyOptions = new ScrollStrategyOptions(
+      this.scrollDispatcher,
+      this.viewRule,
+      this.ngZone,
+      document.body
+    );
+
+    const overlay = new Overlay(
+      scrollStrategyOptions,
+      this.overlayContainer,
+      this.componentFactoryResolver,
+      this.overlayPositionBuilder,
+      this.overlayKeyboardDispatcher,
+      this.applicationRef,
+      this.injector,
+      this.ngZone,
+      document
+    );
+
+    const overlayPositionBuilder: OverlayPositionBuilder = overlay.position();
+    const connectedPositionStrategy: ConnectedPositionStrategy = overlayPositionBuilder.connectedTo(
+      element,
+      originPos,
+      overlayPos
     );
 
     const config = new OverlayConfig({
-      panelClass: 'cl-sokol',
+      panelClass: 'cl-sokol-popover',
       // hasBackdrop: true,
-      // backdropClass: 'cl-cdk-red',
-      positionStrategy: strategy
+      backdropClass: 'cl-sokol-backdrop',
+      positionStrategy: connectedPositionStrategy
     });
+    // connectedPositionStrategy.withOffsetX(20);
+    connectedPositionStrategy.recalculateLastPosition();
 
-    const overlayRef: OverlayRef = this.overlay.create(config);
-
+    const overlayRef: OverlayRef = overlay.create(config);
     overlayRef.attach(createPortal);
     overlayRef.backdropClick().subscribe( () => {
-      console.log('heello');
+      // connectedPositionStrategy.recalculateLastPosition();
       overlayRef.detach();
+      overlayRef.dispose();
     });
-    // overlayRef.updatePosition();
   }
-
 }
