@@ -1,0 +1,8 @@
+<button (click)="showOverlay()" cdk-overlay-origin>show Overlay</button>
+
+<ng-template cdk-portal>
+    <div class="my-overlay" >
+        <ng-content></ng-content>
+    </div>
+</ng-template>
+

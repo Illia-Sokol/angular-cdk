@@ -4,18 +4,21 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import 'hammerjs';
 
+import { JeremyCdkOverlayComponent } from './jeremy-sample/jeremy-sample.component';
+
 import { OverlayModule } from '@angular/cdk/overlay';
 import { PortalModule } from '@angular/cdk/portal';
 import { FilePreviewOverlayComponent } from './file-preview/file-preview-overlay.component';
 import { FilePreviewOverlayService } from './service/file-preview-overlay.service';
-import { ConnectedComponent } from './connected-overlay/conntected.component';
-import { ConnectedService } from './connected-overlay/connected.service';
+import { ConnectedComponent } from './popover-service/conntected.component';
+import { ConnectedService } from './popover-service/connected.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     FilePreviewOverlayComponent,
-    ConnectedComponent
+    ConnectedComponent,
+    JeremyCdkOverlayComponent
   ],
   imports: [
     BrowserModule,

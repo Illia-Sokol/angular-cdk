@@ -1,4 +1,16 @@
 .template {
     background: #fff;
     border: 1px solid #aaa;
+    padding: 32px;
+}
+
+.popover-service {
+    border: 1px solid #ddd;
+    background: #fff;
+    padding: 10px;
+}
+
+.popover-service:hover {
+    background: lightblue;
+    cursor: pointer;
 }

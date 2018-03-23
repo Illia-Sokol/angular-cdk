@@ -1,18 +1,40 @@
 <h1>Preview Overlay</h1>
 
-<button (click)="showFilePreview()">Show Preview</button>
+<button (click)="showFilePreview()">Show Modal Preview</button>
 <hr><br>
 
 
-
 <app-connected>
-    <div>Helllo illia</div>
+    <div>Another popover</div>
 </app-connected>
 <hr><br>
 
 
+<app-jeremy-sample></app-jeremy-sample>
+<hr><br>
 
-<button (click)="getApp()" #popoverLink>get template</button>
-<ng-template #popoverContent>
-    <div class="template">some template and ror directive</div>
+
+<button 
+    (click)="showFirst()"
+    class="popover-service"
+    cdkOverlayOrigin
+    #trigger="cdkOverlayOrigin"
+    >Show popover from service</button>
+<ng-template
+    cdkConnectedOverlay
+    [cdkConnectedOverlayOrigin]="trigger"
+    [cdkConnectedOverlayOpen]="isOpen"
+    >
+    <div class="template">Another popover</div>
+</ng-template>
+
+<button 
+    (click)="getApp()"
+    #popoverLink
+    class="popover-service"
+    >Show popover from service</button>
+<ng-template
+    #popoverContent
+    >
+    <div class="template">Another popover</div>
 </ng-template>

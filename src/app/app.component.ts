@@ -1,7 +1,7 @@
 import { Component, ViewChild, TemplateRef, ViewContainerRef, ElementRef } from '@angular/core';
 import { FilePreviewOverlayService } from './service/file-preview-overlay.service';
 import { FilePreviewOverlayRef } from './service/file-preview-overlay-ref';
-import { ConnectedService } from './connected-overlay/connected.service';
+import { ConnectedService } from './popover-service/connected.service';
 
 @Component({
   selector: 'app-root',
@@ -11,6 +11,7 @@ import { ConnectedService } from './connected-overlay/connected.service';
 export class AppComponent {
   @ViewChild('popoverContent') private popoverContent: TemplateRef<any>;
   @ViewChild('popoverLink') private popoverLink: ElementRef;
+  public isOpen = false;
 
   constructor(
     private filePreviewOverlayService: FilePreviewOverlayService,
@@ -26,7 +27,11 @@ export class AppComponent {
     // }, 2000);
   }
 
-  getApp(event) {
+  showFirst() {
+    this.isOpen = !this.isOpen;
+  }
+
+  getApp() {
     this.connectedService.open(this.popoverContent, this.vcr, this.popoverLink);
   }
 }
