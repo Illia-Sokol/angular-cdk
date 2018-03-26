@@ -1,3 +1,8 @@
 <h1>Preview Overlay</h1>
 
-<button (click)="showFilePreview()">Show Preview</button>
+<!-- <button (click)="showFilePreview()">Show Preview</button> -->
+
+<button [flDirective]='popover'>show popover</button>
+<fl-popover #popover>
+    FL Popover
+</fl-popover>

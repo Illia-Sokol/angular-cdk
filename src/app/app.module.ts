@@ -8,10 +8,15 @@ import { OverlayModule } from '@angular/cdk/overlay';
 import { FilePreviewOverlayComponent } from './file-preview/file-preview-overlay.component'
 import { FilePreviewOverlayService } from './service/file-overview-overlay.service'
 
+import { FlPopoverComponent } from './fl-popover/fl-popover.component';
+import { FlPopoverDirective } from './fl-popover/fl-popover.directive';
+
 @NgModule({
   declarations: [
     AppComponent,
-    FilePreviewOverlayComponent
+    FilePreviewOverlayComponent,
+    FlPopoverComponent,
+    FlPopoverDirective
   ],
   imports: [
     BrowserModule,
