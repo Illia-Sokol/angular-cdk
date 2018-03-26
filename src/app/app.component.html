@@ -36,3 +36,10 @@
     #popoverContent>
     <div class="template">Another popover</div>
 </ng-template>
+
+<br><hr>
+<div [ClPopoverTriggerFor]="popover">cl-popover</div>
+
+<cl-popover #popover="clPopover">
+    <h1>This is my cl-popover</h1>
+</cl-popover>

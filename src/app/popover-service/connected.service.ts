@@ -16,7 +16,8 @@ import {
   Injector
 } from '@angular/core';
 import {
-  TemplatePortal
+  TemplatePortal,
+  DomPortalHost
 } from '@angular/cdk/portal';
 import {
   Overlay,
@@ -31,11 +32,11 @@ import {
   OverlayContainer,
   OverlayPositionBuilder,
   OverlayKeyboardDispatcher,
-  ScrollStrategy
+  ScrollStrategy,
 } from '@angular/cdk/overlay';
 import { Platform } from '@angular/cdk/platform';
 import {
-  ViewportRuler,
+  ViewportRuler, CdkScrollable,
 } from '@angular/cdk/scrolling';
 import {LayoutModule} from '@angular/cdk/layout';
 
@@ -62,7 +63,7 @@ export class ConnectedService {
   public open<T>(
     componentOrTemplateRef: TemplateRef<T>,
     viewRef: ViewContainerRef,
-    element: ElementRef,
+    element: ElementRef
   ) {
     const createPortal = new TemplatePortal(componentOrTemplateRef, viewRef);
 
@@ -100,21 +101,26 @@ export class ConnectedService {
       overlayPos
     );
 
+    // withScrollableContainers
+
     const config = new OverlayConfig({
       panelClass: 'cl-sokol-popover',
       // hasBackdrop: true,
       backdropClass: 'cl-sokol-backdrop',
       positionStrategy: connectedPositionStrategy
     });
-    // connectedPositionStrategy.withOffsetX(20);
+    connectedPositionStrategy.withOffsetX(20);
     connectedPositionStrategy.recalculateLastPosition();
+
+    const sokol: CdkScrollable[] = [new CdkScrollable(element, this.scrollDispatcher, this.ngZone)];
 
     const overlayRef: OverlayRef = overlay.create(config);
     overlayRef.attach(createPortal);
     overlayRef.backdropClick().subscribe( () => {
-      // connectedPositionStrategy.recalculateLastPosition();
       overlayRef.detach();
-      overlayRef.dispose();
+      // overlayRef.dispose();
+      connectedPositionStrategy.withOffsetX(20);
+      overlayRef.attach(createPortal);
     });
   }
 }

@@ -13,12 +13,17 @@ import { FilePreviewOverlayService } from './service/file-preview-overlay.servic
 import { ConnectedComponent } from './popover-service/conntected.component';
 import { ConnectedService } from './popover-service/connected.service';
 
+import { ClPopoverComponent } from './popover/popover.component';
+import { ClPopoverTriggerDirective } from './popover/popover-trigger.directive';
+
 @NgModule({
   declarations: [
     AppComponent,
     FilePreviewOverlayComponent,
     ConnectedComponent,
-    JeremyCdkOverlayComponent
+    JeremyCdkOverlayComponent,
+    ClPopoverComponent,
+    ClPopoverTriggerDirective
   ],
   imports: [
     BrowserModule,
