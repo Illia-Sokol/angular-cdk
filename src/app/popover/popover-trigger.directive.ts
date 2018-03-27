@@ -1,6 +1,6 @@
 // https://github.com/material-extended/mde
 
-import { Directive, Input, ViewContainerRef, HostListener, ElementRef } from '@angular/core';
+import { Directive, Input, ViewContainerRef, HostListener, ElementRef, TemplateRef } from '@angular/core';
 import {
     OverlayRef,
     Overlay,
@@ -41,14 +41,14 @@ export class ClPopoverTriggerDirective {
 
     @HostListener('click')
     onClick() {
-        // if (this.popover.)
+        console.log(this.popover);
         // this.togglePopover();
-        this.openPopover();
+        // this.openPopover();
     }
 
-    // togglePopover(): void {
-    //     return this._popoverOpen ? this.closePopover() : this.openPopover();
-    // }
+    togglePopover(): void {
+        return this._popoverOpen ? this.closePopover() : this.openPopover();
+    }
 
     openPopover(): void {
         if (!this._popoverOpen) {
@@ -86,8 +86,8 @@ export class ClPopoverTriggerDirective {
         );
     }
 
-    private _subscribeToPositions(position: ConnectedPositionStrategy): void {
-        this.
-        let positionY: ClPopoverPanel = change.
-    }
+    // private _subscribeToPositions(position: ConnectedPositionStrategy): void {
+    //     this.
+    //     let positionY: ClPopoverPanel = change.
+    // }
 }
