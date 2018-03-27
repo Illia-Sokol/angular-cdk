@@ -1,8 +1,6 @@
 <h1>Preview Overlay</h1>
 
-<!-- <button (click)="showFilePreview()">Show Preview</button> -->
-
-<button [flDirective]='popover'>show popover</button>
-<fl-popover #popover>
-    FL Popover
-</fl-popover>
+<button [appCflDirective]="popover1">show popover</button>
+<app-fl-popover #popover1="flPopover">
+    <!-- <h1>Fl Popover</h1> -->
+</app-fl-popover>

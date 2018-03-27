@@ -5,8 +5,9 @@ import { AppComponent } from './app.component';
 import 'hammerjs';
 
 import { OverlayModule } from '@angular/cdk/overlay';
+import { PortalModule } from '@angular/cdk/portal';
 import { FilePreviewOverlayComponent } from './file-preview/file-preview-overlay.component';
-import { FilePreviewOverlayService } from './service/file-preview-overlay.service';
+import { FilePreviewOverlayService } from './service/file-overview-overlay.service';
 import { FilePreviewOverlayService } from './service/file-overview-overlay.service';
 
 import { FlPopoverComponent } from './fl-popover/fl-popover.component';
