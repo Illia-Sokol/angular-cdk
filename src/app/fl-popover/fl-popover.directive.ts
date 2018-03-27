@@ -7,7 +7,7 @@ import { ComponentPortal } from '@angular/cdk/portal';
 })
 
 export class FlPopoverDirective {
-    @Input('appCflDirective') popover: any;
+    @Input('appCflDirective') popover: TemplateRef<any>;
 
     private isOpen = false;
 
