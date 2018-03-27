@@ -1,20 +1,20 @@
-import { Directive, HostListener, Input, ElementRef, ViewContainerRef } from "@angular/core";
-import { Overlay, OverlayConfig, ConnectedPositionStrategy } from "@angular/cdk/overlay";
-import { ComponentPortal } from "@angular/cdk/portal";
+import { Directive, HostListener, Input, ElementRef, ViewContainerRef, TemplateRef } from '@angular/core';
+import { Overlay, OverlayConfig, ConnectedPositionStrategy } from '@angular/cdk/overlay';
+import { ComponentPortal } from '@angular/cdk/portal';
 
 @Directive({
-    selector: '[flDirective]'
+    selector: '[appCflDirective]'
 })
 
 export class FlPopoverDirective {
-    @Input('flDirective') popover: any;
+    @Input('appCflDirective') popover: any;
 
-    private isOpen: boolean = false;
+    private isOpen = false;
 
     @HostListener('click')
     onClick() {
-        this.toggle();
-        console.log('show popover', this.popover);
+        // this.toggle();
+        console.log(this.popover);
     }
 
     constructor (
@@ -24,7 +24,7 @@ export class FlPopoverDirective {
     ) {}
 
     private toggle(): void {
-        return this.isOpen ? this.hide() : this.show(); 
+        return this.isOpen ? this.hide() : this.show();
     }
 
     private hide() {}
@@ -34,15 +34,15 @@ export class FlPopoverDirective {
             this.element,
             { originX: 'start', originY: 'top'},
             { overlayX: 'start', overlayY: 'top'}
-        )
+        );
         const _overlay = this.overlay.create({
             positionStrategy: config,
             hasBackdrop: true,
             backdropClass: 'cdk-fl-popover'
         });
-        
-        const portal = new ComponentPortal(this.popover, this.viewRef);
-        _overlay.attach(portal);
+
+        // const portal = new ComponentPortal(this.popover, this.viewRef);
+        // _overlay.attach(portal);
     }
 
     // private getConfig(): OverlayConfig {

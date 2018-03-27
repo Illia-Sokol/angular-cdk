@@ -5,8 +5,9 @@ import { AppComponent } from './app.component';
 import 'hammerjs';
 
 import { OverlayModule } from '@angular/cdk/overlay';
-import { FilePreviewOverlayComponent } from './file-preview/file-preview-overlay.component'
-import { FilePreviewOverlayService } from './service/file-overview-overlay.service'
+import { PortalModule } from '@angular/cdk/portal';
+import { FilePreviewOverlayComponent } from './file-preview/file-preview-overlay.component';
+import { FilePreviewOverlayService } from './service/file-overview-overlay.service';
 
 import { FlPopoverComponent } from './fl-popover/fl-popover.component';
 import { FlPopoverDirective } from './fl-popover/fl-popover.directive';
@@ -20,7 +21,8 @@ import { FlPopoverDirective } from './fl-popover/fl-popover.directive';
   ],
   imports: [
     BrowserModule,
-    OverlayModule
+    OverlayModule,
+    PortalModule
   ],
   providers: [FilePreviewOverlayService],
   bootstrap: [AppComponent],
