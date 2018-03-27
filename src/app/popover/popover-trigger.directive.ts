@@ -42,7 +42,7 @@ export class ClPopoverTriggerDirective {
     @HostListener('click')
     onClick() {
         console.log(this.popover);
-        // this.togglePopover();
+        this.togglePopover();
         // this.openPopover();
     }
 
@@ -56,13 +56,12 @@ export class ClPopoverTriggerDirective {
         }
     }
 
-    // closePopover(): void {
-
-    // }
+    closePopover(): void {
+    }
 
     private _createOverlay(): OverlayRef {
         if (!this._overlayRef) {
-            this._portal = new TemplatePortal(this.popover.templateRef, this._viewContainerRef);
+            this._portal = new TemplatePortal(this.popover, this._viewContainerRef);
             const config = this._getOverlayConfig();
             this._overlayRef = this._overlay.create(config);
         }

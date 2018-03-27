@@ -15,6 +15,6 @@ import { ClPopoverPanel } from './popover-interface';
     exportAs: 'clPopover'
 })
 
-export class ClPopoverComponent implements ClPopoverPanel {
+export class ClPopoverComponent {
     @ViewChild(TemplateRef) templateRef: TemplateRef<any>;
 }
