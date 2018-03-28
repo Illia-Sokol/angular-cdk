@@ -12,6 +12,9 @@ import { FilePreviewOverlayService } from './service/file-preview-overlay.servic
 import { FlPopoverComponent } from './fl-popover/fl-popover.component';
 import { FlPopoverDirective } from './fl-popover/fl-popover.directive';
 
+import { FilePreviewOverlayComponent } from './file-preview/file-preview-overlay.component';
+import { FilePreviewOverlayService } from './service/file-preview-overlay.service';
+
 @NgModule({
   declarations: [
     AppComponent,
