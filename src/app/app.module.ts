@@ -5,17 +5,27 @@ import { AppComponent } from './app.component';
 import 'hammerjs';
 
 import { OverlayModule } from '@angular/cdk/overlay';
+import { PortalModule } from '@angular/cdk/portal';
+import { FilePreviewOverlayComponent } from './file-preview/file-preview-overlay.component';
+import { FilePreviewOverlayService } from './service/file-preview-overlay.service';
+
+import { FlPopoverComponent } from './fl-popover/fl-popover.component';
+import { FlPopoverDirective } from './fl-popover/fl-popover.directive';
+
 import { FilePreviewOverlayComponent } from './file-preview/file-preview-overlay.component';
 import { FilePreviewOverlayService } from './service/file-preview-overlay.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FilePreviewOverlayComponent
+    FilePreviewOverlayComponent,
+    FlPopoverComponent,
+    FlPopoverDirective
   ],
   imports: [
     BrowserModule,
-    OverlayModule
+    OverlayModule,
+    PortalModule
   ],
   providers: [FilePreviewOverlayService],
   bootstrap: [AppComponent],

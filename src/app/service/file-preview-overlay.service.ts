@@ -32,7 +32,7 @@ export class FilePreviewOverlayService {
 
         return dialogRef;
     }
-
+  
     private createIjector(config: FilePreviewDialogConfig, dialog: FilePreviewOverlayRef): PortalInjector {
 
     }
