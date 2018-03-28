@@ -1,4 +1,5 @@
 import { Component, ViewChild, TemplateRef } from '@angular/core';
+import { PopoverInterface } from './fl-popover.interface';
 
 @Component({
     selector: 'app-fl-popover',
@@ -7,6 +8,6 @@ import { Component, ViewChild, TemplateRef } from '@angular/core';
     exportAs: 'flPopover'
 })
 
-export class FlPopoverComponent {
+export class FlPopoverComponent implements PopoverInterface {
     @ViewChild(TemplateRef) templateRef: TemplateRef<any>;
 }
