@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { FilePreviewOverlayService } from './service/file-preview-overlay.service';
-import { FilerPreviewOverlayRef } from './service/file-preview-overlay-ref';
 
 @Component({
   selector: 'app-root',
@@ -11,10 +10,5 @@ export class AppComponent {
   constructor(private filePreviewOverlayService: FilePreviewOverlayService) {}
 
   showFilePreview() {
-    const dialogRef: FilerPreviewOverlayRef = this.filePreviewOverlayService.open();
-
-    // setTimeout( () => {
-    //   dialogRef.close();
-    // }, 2000);
   }
 }
