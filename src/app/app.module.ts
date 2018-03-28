@@ -7,13 +7,9 @@ import 'hammerjs';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { PortalModule } from '@angular/cdk/portal';
 import { FilePreviewOverlayComponent } from './file-preview/file-preview-overlay.component';
-import { FilePreviewOverlayService } from './service/file-preview-overlay.service';
 
 import { FlPopoverComponent } from './fl-popover/fl-popover.component';
 import { FlPopoverDirective } from './fl-popover/fl-popover.directive';
-
-import { FilePreviewOverlayComponent } from './file-preview/file-preview-overlay.component';
-import { FilePreviewOverlayService } from './service/file-preview-overlay.service';
 
 @NgModule({
   declarations: [
@@ -27,7 +23,7 @@ import { FilePreviewOverlayService } from './service/file-preview-overlay.servic
     OverlayModule,
     PortalModule
   ],
-  providers: [FilePreviewOverlayService],
+  providers: [],
   bootstrap: [AppComponent],
   entryComponents: [FilePreviewOverlayComponent]
 })

@@ -13,7 +13,7 @@ export class FlPopoverDirective {
 
     @HostListener('click')
     onClick() {
-        // this.toggle();
+        this.toggle();
         console.log(this.popover);
     }
 
@@ -41,11 +41,7 @@ export class FlPopoverDirective {
             backdropClass: 'cdk-fl-popover'
         });
 
-        // const portal = new ComponentPortal(this.popover, this.viewRef);
-        // _overlay.attach(portal);
+        const portal = new ComponentPortal(this.popover, this.viewRef);
+        _overlay.attach(portal);
     }
-
-    // private getConfig(): OverlayConfig {
-
-    // }
 }
