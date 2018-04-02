@@ -8,23 +8,23 @@ import { OverlayModule } from '@angular/cdk/overlay';
 import { PortalModule } from '@angular/cdk/portal';
 import { FilePreviewOverlayComponent } from './file-preview/file-preview-overlay.component';
 
-import { FlPopoverComponent } from './fl-popover/fl-popover.component';
-import { FlPopoverDirective } from './fl-popover/fl-popover.directive';
+// import { FlPopoverComponent } from './fl-popover/fl-popover.component';
+// import { FlPopoverDirective } from './fl-popover/fl-popover.directive';
+import { FlPopoverModule, FlPopoverComponent, FlPopoverDirective } from './fl-popover';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FilePreviewOverlayComponent,
-    FlPopoverComponent,
-    FlPopoverDirective
+    FilePreviewOverlayComponent
   ],
   imports: [
     BrowserModule,
     OverlayModule,
-    PortalModule
+    PortalModule,
+    FlPopoverModule
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [FilePreviewOverlayComponent]
+  entryComponents: [FilePreviewOverlayComponent,  FlPopoverComponent]
 })
 export class AppModule { }
