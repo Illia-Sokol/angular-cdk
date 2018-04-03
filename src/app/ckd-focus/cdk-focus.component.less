@@ -1,0 +1,19 @@
+:host {
+   div {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    border: 1px solid #a1a;
+   }
+
+   span {
+       background: #bbb;
+       text-align: center;
+       border: 1px solid transparent;
+
+       &:focus {
+           border: 1px solid yellow;
+           outline: none;
+       }
+   }
+}

@@ -6,19 +6,23 @@ import 'hammerjs';
 
 import { OverlayModule } from '@angular/cdk/overlay';
 import { PortalModule } from '@angular/cdk/portal';
+import { A11yModule } from '@angular/cdk/a11y';
 import { FilePreviewOverlayComponent } from './file-preview/file-preview-overlay.component';
 
 import { FlPopoverModule } from './fl-popover';
+import { CdkFocusComponent } from './ckd-focus';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FilePreviewOverlayComponent
+    FilePreviewOverlayComponent,
+    CdkFocusComponent
   ],
   imports: [
     BrowserModule,
     OverlayModule,
     PortalModule,
+    A11yModule,
     FlPopoverModule
   ],
   providers: [],
