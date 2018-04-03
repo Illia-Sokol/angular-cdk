@@ -8,6 +8,6 @@ import { PopoverInterface } from './fl-popover.interface';
     exportAs: 'flPopover'
 })
 
-export class FlPopoverComponent implements PopoverInterface {
-    @ViewChild(TemplateRef) templateRef: TemplateRef<any>;
+export class FlPopoverComponent {
+    @ViewChild(TemplateRef) templateRef: PopoverInterface;
 }

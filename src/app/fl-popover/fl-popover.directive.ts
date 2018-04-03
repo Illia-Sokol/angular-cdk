@@ -1,15 +1,17 @@
 import { Directive, HostListener, Input, ElementRef, ViewContainerRef, TemplateRef } from '@angular/core';
 import { Overlay, OverlayConfig, ConnectedPositionStrategy } from '@angular/cdk/overlay';
-import { ComponentPortal } from '@angular/cdk/portal';
+import { ComponentPortal, TemplatePortal } from '@angular/cdk/portal';
+import { PopoverInterface } from './fl-popover.interface';
 
 @Directive({
     selector: '[appCflDirective]'
 })
 
-export class FlPopoverDirective {
-    @Input() popover: any;
+export class FlPopoverDirective  {
+    @Input() popover: PopoverInterface;
 
     private isOpen = false;
+    private portal: TemplatePortal<any>;
 
     @HostListener('click')
     onClick() {
@@ -41,7 +43,8 @@ export class FlPopoverDirective {
             backdropClass: 'cdk-fl-popover'
         });
 
-        const portal = new ComponentPortal(this.popover, this.viewRef);
-        _overlay.attach(portal);
+        this.portal = new TemplatePortal(this.popover.templateRef, this.viewRef);
+        _overlay.attach(this.portal);
+
     }
 }
