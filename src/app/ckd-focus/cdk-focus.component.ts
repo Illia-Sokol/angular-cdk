@@ -9,9 +9,37 @@ import {
     QueryList,
     HostListener,
     ViewChild,
-    ElementRef
+    ElementRef,
+    Directive,
+    ContentChildren
 } from '@angular/core';
-import { FocusTrapFactory, FocusMonitor, ListKeyManager, FocusTrap } from '@angular/cdk/a11y';
+import {
+    FocusTrapFactory,
+    FocusMonitor,
+    FocusKeyManager,
+    ListKeyManager,
+    FocusTrap,
+    ActiveDescendantKeyManager,
+    Highlightable,
+    FocusableOption
+} from '@angular/cdk/a11y';
+
+import { OptionComponent } from '../option/option.component';
+
+@Directive({
+    selector: '[role="dialog"]'
+})
+export class RoleDirective implements Highlightable {
+    isActive = false;
+    setActiveStyles(): void {
+        this.isActive = true;
+    }
+
+    setInactiveStyles(): void {
+        this.isActive = false;
+    }
+}
+
 
 @Component({
     selector: 'cdk-focus',
@@ -20,49 +48,38 @@ import { FocusTrapFactory, FocusMonitor, ListKeyManager, FocusTrap } from '@angu
 })
 
 export class CdkFocusComponent implements AfterViewInit {
-    inputs: Array<number> = [1, 2, 3, 4, 5, 6, 7];
-    keyManager: ListKeyManager<any>;
+    keyManager: any;
 
     @ViewChild('element') element: ElementRef;
-    @ViewChildren('child') elementChild: QueryList<any>;
+    @ViewChildren(OptionComponent) elementChild: QueryList<OptionComponent>;
+    @ContentChildren(OptionComponent) elementChild2: QueryList<OptionComponent>;
 
-    constructor(
-        private focusTrap: FocusTrapFactory,
-        private focusMonitor: FocusMonitor
-    ) {}
+    constructor( private focusTrap: FocusTrapFactory,
+                private focusMonitor: FocusMonitor ) {}
 
     ngAfterViewInit() {
-        this.keyManager = new ListKeyManager(this.elementChild);
-        this.keyManager.withVerticalOrientation();
-        this.keyManager.withHorizontalOrientation('ltr');
-        this.keyManager.withWrap();
+        // this.keyManager = new ListKeyManager(this.elementChild);
+        // this.keyManager.withHorizontalOrientation('ltr');   // Arrow navigation options
+        // this.keyManager.withWrap();  // Arrow navigation options
     }
 
-    @HostListener('keyup', ['$event'])
-    keyFunc(event) {
-        if (event.keyCode !== 'Tab') {
-            this.keyManager.onKeydown(event);
-            this.focusMonitor.focusVia(this.keyManager.activeItem.nativeElement, 'keyboard');
-            this.keyManager.setNextItemActive();
-        } else {
-            this.keyManager.onKeydown(event);
-            this.keyManager.setNextItemActive();
-        }
-    }
+    /* Enables keyboard arrows navigation */
+    // @HostListener('window:keyup', ['$event'])
+    // keyFunc(event) {
+    //     if (event.code !== 'Tab') {
+    //     this.keyManager.onKeydown(event);
+    //     this.focusMonitor.focusVia(this.keyManager.activeItem.nativeElement, 'keyboard');
+    //     } else {  // 'artificially' updates the active element in case the user uses Tab instead of arrows
+    //     this.keyManager.onKeydown(event);
+    //     this.keyManager.setNextItemActive();
+    //     }
+    // }
 
-    public testA11() {
-        // this.element.nativeElement.hidden = false;
-        // const focusTrap = this.focusTrap.create(this.element.nativeElement);
-        // const focusTrap = this.focusTrap.create(this.elementChild);
-        // focusTrap.focusInitialElement();
-        // this.keyManager.setFirstItemActive();
-
-        // this.keyManager.setFirstItemActive();
-        // this.keyManager.activeItem;
-
-        const focus: FocusTrap = this.focusTrap.create(this.element.nativeElement);
-        focus.focusInitialElement();
-        this.keyManager.setFirstItemActive();
-        // let focus = new FocusTrapFactory(this.keyManager.activeItem);
+    /* Shows the form, puts focus on it and initialize keyboard navigation */
+    testA11y() {
+        this.element.nativeElement.hidden = false;
+        const focusTrap = this.focusTrap.create(this.element.nativeElement);  // creates a focus trap region
+        focusTrap.focusInitialElement(); // Moves the focus in the form (by default the first field)
+        // this.keyManager.setFirstItemActive();  // Sets the element we focused on as 'active' to the KeyManager
     }
 }

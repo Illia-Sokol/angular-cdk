@@ -12,11 +12,14 @@ import { FilePreviewOverlayComponent } from './file-preview/file-preview-overlay
 import { FlPopoverModule } from './fl-popover';
 import { CdkFocusComponent } from './ckd-focus';
 
+import { OptionComponent } from './option/option.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     FilePreviewOverlayComponent,
-    CdkFocusComponent
+    CdkFocusComponent,
+    OptionComponent
   ],
   imports: [
     BrowserModule,

@@ -7,4 +7,16 @@
 
 <h2>Focus</h2>
 
-<cdk-focus></cdk-focus>
+<input type="text">
+<p></p>
+<input type="text">
+<p></p>
+
+<cdk-focus>
+    <app-option *ngFor="let i of inputs" tabindex="0">
+        <span>input {{i}}</span>
+    </app-option>
+</cdk-focus>
+
+<p></p>
+<input type="text">
