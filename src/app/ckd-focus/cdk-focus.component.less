@@ -8,5 +8,22 @@
     &:focus {
         border: 2px solid yellow;
     }
+
+    > div {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+   }
+
+   .child {
+        background: #eee;
+        text-align: center;
+        border: 1px solid transparent;
+
+        &:focus {
+            border: 1px solid yellow;
+            outline: none;
+        }
    }
 }

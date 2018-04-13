@@ -1,0 +1,39 @@
+<button
+    (click)="isOpen = !isOpen"
+    cdkOverlayOrigin
+    #trigger="cdkOverlayOrigin"
+    [style.background]="selectedColor || 'none'">
+    Open popover
+</button>
+
+
+<!-- <ng-template
+    cdkConnectedOverlay
+    [cdkConnectedOverlayOrigin]="trigger"
+    [cdkConnectedOverlayOpen]="isOpen">
+    <div class="popover">
+        <div tabindex="0" class="color-block"
+            cdkTrapFocus cdkTrapFocusAutoCapture 
+            (keydown)="keyDownHandler($event)">
+            <div *ngFor="let color of colors; index as i"
+                class="color"
+                role="option"
+                [style.background]="color.hex"
+                (click)="selectedColor = color.hex; isOpen = false; activeIndex = i">
+            </div>
+        </div>
+    </div>
+</ng-template> -->
+
+<ng-template
+    cdkConnectedOverlay
+    [cdkConnectedOverlayOrigin]="trigger"
+    [cdkConnectedOverlayOpen]="isOpen">
+    <div class="popover">
+        <div tabindex="0" class="color-block"
+            cdkTrapFocus cdkTrapFocusAutoCapture 
+            (keydown)="keyDownHandler($event)">
+            <ng-content></ng-content>
+        </div>
+    </div>
+</ng-template>

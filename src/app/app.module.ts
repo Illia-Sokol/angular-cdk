@@ -14,12 +14,16 @@ import { CdkFocusComponent } from './ckd-focus';
 
 import { OptionComponent } from './option/option.component';
 
+import { FocusSampleComponent, ColorOptionDirective } from './focus-sample/focus-sample.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     FilePreviewOverlayComponent,
     CdkFocusComponent,
-    OptionComponent
+    OptionComponent,
+    FocusSampleComponent,
+    ColorOptionDirective
   ],
   imports: [
     BrowserModule,

@@ -1,14 +1,10 @@
-<!-- <button (click)="testA11()">Test A11</button>
-<div role="listbox" tabindex="0" #element (keydown)="keydownHandler($event)">
-    <span *ngFor="let i of inputs" role='option'>input {{i}}</span>
-</div> -->
-
 <button (click)="testA11y()"> Test A11y! </button>
 <div #element [hidden]=true>
     <div>
         <div class="content">
             <div>
-                <ng-content></ng-content>
+                <!-- <ng-content></ng-content> -->
+                <span *ngFor="let i of inputs" tabindex="0" #children class="child">item {{i}</span>
             </div>
         </div>
     </div>

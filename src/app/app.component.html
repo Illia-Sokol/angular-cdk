@@ -6,17 +6,27 @@
 </app-fl-popover> -->
 
 <h2>Focus</h2>
-
 <input type="text">
 <p></p>
 <input type="text">
 <p></p>
-
 <cdk-focus>
-    <app-option *ngFor="let i of inputs" tabindex="0">
+    <app-option *ngFor="let i of inputs" (keydown)="keyDownHandler($event)">
         <span>input {{i}}</span>
     </app-option>
 </cdk-focus>
-
 <p></p>
 <input type="text">
+
+<!-- <div style="margin-top: 1000px"></div> -->
+
+<h2>Focus2</h2>
+<app-focus-sample>
+    <app-option *ngFor="let color of colors; index as i"
+        class="color"
+        role="option"
+        [style.background]="color.hex">
+        input {{i}}
+    </app-option>
+</app-focus-sample>
+
